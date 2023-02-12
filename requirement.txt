@@ -1,0 +1,9 @@
+streamlit 
+pandas==1.4.2
+numpy==1.22.3
+sklearn
+seaborn
+matplotlib
+mlxtend
+plotly==5.7.0
+us
