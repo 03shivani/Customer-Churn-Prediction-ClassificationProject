@@ -58,7 +58,7 @@ def nullvalueimputer(data,x,y):
 # import csv file
 #@st.cache(allow_output_mutation=True)
 def get_data():
-    df = pd.read_csv("C:\\Users\\win7\\OneDrive\\Desktop\\Churn.csv")
+    df = pd.read_csv("Churn.csv")
     df = df.drop(['Unnamed: 0'],axis=1)
     df.columns = df.columns.str.replace('.', '_')
     #df['Churn'] = np.where(df['Churn']=='FALSE',0,1)
