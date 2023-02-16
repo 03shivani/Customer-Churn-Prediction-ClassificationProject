@@ -61,7 +61,7 @@ def nullvalueimputer(data,x,y):
 # import csv file
 #@st.cache(allow_output_mutation=True)
 def get_data():
-    df = pd.read_csv("C:\\Users\\Shivani Bhavsar\\OneDrive\\Desktop\\ExcelR Project\\Churn.csv")
+    df = pd.read_csv("Churn.csv")
     df = df.drop(['Unnamed: 0'],axis=1)
     df.columns = df.columns.str.replace('.', '_')
     #df['Churn'] = np.where(df['Churn']=='FALSE',0,1)
@@ -389,10 +389,10 @@ data1=['High', 'Low-Medium', 'Low', 'Medium-High', 'intl_plan_no',
        'intl_mins', 'intl_calls', 'intl_charge', 'day_mins', 'day_calls',
        'day_charge', 'eve_mins', 'eve_calls', 'eve_charge', 'night_mins',
        'night_calls', 'night_charge', 'customer_calls']
-sc=pd.read_csv("C:\\Users\\Shivani Bhavsar\\OneDrive\\Desktop\\ExcelR Project\\state-category.csv")
-unique_states=pd.read_csv("C:\\Users\\Shivani Bhavsar\\OneDrive\\Desktop\\ExcelR Project\\unique_states.csv")
+sc=pd.read_csv("state-category.csv")
+unique_states=pd.read_csv("unique_states.csv")
 import pickle
-model = pickle.load(open('C:\\Users\\Shivani Bhavsar\\OneDrive\\Desktop\\ExcelR Project\\ch.pkl','rb'))
+model = pickle.load(open('ch.pkl','rb'))
 ##############################   User Input    
     
 if selected == 'Prediction': 
