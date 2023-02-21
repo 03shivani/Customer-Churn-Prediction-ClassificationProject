@@ -30,7 +30,7 @@ with st.sidebar:
 # st.markdown("<h1 style='text-align: center; font-family: monospace; color: #40e0d0;'>CHURN PREDICTION</h1>", unsafe_allow_html=True)
 # st.markdown("<h1 style='text-align: center; font-family: monospace; color: #7cfc00;'>CHURN PREDICTION</h1>", unsafe_allow_html=True)
 # st.markdown("<h1 style='text-align: center; font-family: monospace; color: #ffdead;'>CHURN PREDICTION</h1>", unsafe_allow_html=True)
-# st.markdown("<h1 style='text-align: center; font-family: monospace; color: #f5deb3;'>CHURN PREDICTION</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center; font-family: monospace; color: #f5deb3;'>CHURN PREDICTION</h1>", unsafe_allow_html=True)
 # st.markdown("<h1 style='text-align: center; font-family: monospace; color: #ffebcd;'>CHURN PREDICTION</h1>", unsafe_allow_html=True)
 
 
@@ -39,13 +39,9 @@ with st.sidebar:
 
 #st.markdown("<h1 style='text-align: center; font-family: sans-serif;'>Churn prediction</h1>", unsafe_allow_html=True)
 # st.markdown("<h3 style='text-align: center;'>=====================================================================</h3>", unsafe_allow_html=True)
-# st.markdown("<h3 style='text-align: center; margin-bottom: -40px;'>_____________________________________________________________________</h3>", unsafe_allow_html=True)
-# st.markdown("<h3 style='text-align: center; margin-top: -40px;'>_____________________________________________________________________</h3>", unsafe_allow_html=True)
+st.markdown("<h3 style='text-align: center; margin-bottom: -40px;'>_____________________________________________________________________</h3>", unsafe_allow_html=True)
+st.markdown("<h3 style='text-align: center; margin-top: -40px;'>_____________________________________________________________________</h3>", unsafe_allow_html=True)
 
-
-# title
-st.markdown("<h1 style='text-align: center; font-family: monospace; color: #f5deb3;'>CHURN PREDICTION</h1>", unsafe_allow_html=True)
-st.markdown("<h3 style='text-align: center;'>_____________________________________________________________</h3>", unsafe_allow_html=True)
 
 
 
@@ -81,7 +77,7 @@ def nullvalueimputer(data,x,y):
 # import csv file
 #@st.cache(allow_output_mutation=True)
 def get_data():
-    df = pd.read_csv("C:\\Users\\Shivani Bhavsar\\OneDrive\\Desktop\\ExcelR Project\\Churn.csv")
+    df = pd.read_csv("Churn.csv")
     df = df.drop(['Unnamed: 0'],axis=1)
     df.columns = df.columns.str.replace('.', '_')
     #df['Churn'] = np.where(df['Churn']=='FALSE',0,1)
@@ -106,7 +102,7 @@ df['day_charge']=pd.to_numeric(df['day_charge'],errors='coerce')
 df['eve_mins']=pd.to_numeric(df['eve_mins'],errors='coerce')
 
 ###########################################################################################################################################
-
+ 
 
 
 
@@ -188,7 +184,7 @@ if selected == 'EDA':
                 st.plotly_chart(fig,use_container_width=True)
 
         if Report == "Bivariate":
-
+            
             selected_col = st.sidebar.selectbox("Select Column", df.columns)
             cl1, cl2 = st.columns([1,1])
             colo = ['#012D9C', '#7097FF']
@@ -213,25 +209,25 @@ if selected == 'EDA':
 
             #                                 ####   Funnel Chart   ####
             else:
-
+                
                 pivot_table = df.groupby([selected_col, 'churn']).size().reset_index(name='count')
                 pivot_table = pivot_table.pivot(index=selected_col, columns='churn', values='count').fillna(0)
                 pivot_table = pivot_table.reset_index().rename_axis(None, axis=1)
                 pivot_table.columns = [selected_col, 'No', 'Yes']
 
                 df8 = pivot_table.melt(id_vars=selected_col, value_vars=['No', 'Yes'], value_name='count')
-
+                
                 ak= ['#AA0DFE', '#3283FE', '#85660D', '#782AB6', '#565656', '#1C8356', '#16FF32', '#F7E1A0', '#E2E2E2', '#1CBE4F',
                      '#C4451C', '#DEA0FD', '#FE00FA', '#325A9B', '#FEAF16', '#F8A19F', '#90AD1C', '#F6222E', '#1CFFCE', '#2ED9FF',
                      '#B10DA1', '#C075A6', '#FC1CBF', '#B00068', '#FBE426', '#FA0087', '#2E91E5', '#E15F99', '#1CA71C', '#FB0D0D',
                      '#DA16FF', '#222A2A', '#B68100', '#750D86', '#EB663B', '#511CFB', '#00A08B', '#FB00D1', '#FC0080', '#B2828D',
                      '#6C7C32', '#778AAE', '#862A16', '#A777F1', '#620042', '#1616A7', '#DA60CA', '#6C4516', '#0D2A63', '#AF0038','#DB6574']
-
+            
                 fig1 = px.funnel(df8, x='variable', y='count'
                                  , color=selected_col
                                         ##  ,color_discrete_sequence=['#DB6574', '#03DAC5','#DB6574', '#03DAC5']
                                  ,color_discrete_sequence=ak
-
+                                
                                  #,color_discrete_sequence = ['red', 'blue', 'orange', 'green']
                                        #   ,title=selected_col
                                 )
@@ -252,10 +248,10 @@ if selected == 'EDA':
                 st.write("")
 
                    #                                 ####   Tree Map   ####
-
-
+               
+                 
                 st.write("")
-                st.write("")
+                st.write("")        
                 st.markdown("<h3 style='text-align: center;'>Tree Map</h3>", unsafe_allow_html=True)
                 pivot_table = df.groupby([selected_col, 'churn']).size().reset_index(name='count')
                 pivot_table = pivot_table.pivot(index=selected_col, columns='churn', values='count').fillna(0)
@@ -359,7 +355,7 @@ if selected == 'EDA':
 #                                   )
 
 #                 # Show the plot
-#                 st.plotly_chart(fig)
+#                 st.plotly_chart(fig,use_container_width=True)
 
                 # Create a form to allow the user to select the columns to group by
                 categorical = ['area_code', 'voice_plan', 'intl_plan']
@@ -389,7 +385,7 @@ if selected == 'EDA':
                     st.warning('Please select at least one column to group by.')
 
 
-
+    
 
 
 
@@ -427,13 +423,13 @@ data1=['High', 'Low-Medium', 'Low', 'Medium-High', 'intl_plan_no',
        'intl_mins', 'intl_calls', 'intl_charge', 'day_mins', 'day_calls',
        'day_charge', 'eve_mins', 'eve_calls', 'eve_charge', 'night_mins',
        'night_calls', 'night_charge', 'customer_calls']
-sc=pd.read_csv("C:\\Users\\Shivani Bhavsar\\OneDrive\\Desktop\\ExcelR Project\\state-category.csv")
-unique_states=pd.read_csv("C:\\Users\\Shivani Bhavsar\\OneDrive\\Desktop\\ExcelR Project\\unique_states.csv")
+sc=pd.read_csv("state-category.csv")
+unique_states=pd.read_csv("unique_states.csv")
 import pickle
-model = pickle.load(open('C:\\Users\\Shivani Bhavsar\\OneDrive\\Desktop\\ExcelR Project\\CH.pkl','rb'))
-##############################   User Input
-
-if selected == 'Prediction':
+model = pickle.load(open('ch.pkl','rb'))
+##############################   User Input    
+    
+if selected == 'Prediction': 
     #st.sidebar.markdown("<h1 style='text-align: left;'>Insert</h1>", unsafe_allow_html=True)
     option = st.sidebar.radio('Insert',('Values','Dataset'))
     if option == 'Values':
@@ -464,7 +460,7 @@ if selected == 'Prediction':
                 night_calls = st.number_input('Night Calls', value=0)
                 night_charge = st.number_input('Night Charge', value=0.0, step=0.1)
                 customer_calls = st.number_input('Customer Calls', value=0)
-
+      
             data = {'state':state,
                    'area_code':area_code,
                    'account_length':account_length,
@@ -486,12 +482,12 @@ if selected == 'Prediction':
                    'customer_calls':customer_calls
                    }
             features = pd.DataFrame(data,index = [0])
-            return features
-
-
+            return features       
+        
+     
         av = user_input_features()
-        av['state'] = av['state'].apply(lambda x: x[:2])
-        av['state'] = av['state'].replace(sc.set_index('State')['Value'])
+        av['state'] = av['state'].apply(lambda x: x[:2])         
+        av['state'] = av['state'].replace(sc.set_index('State')['Value']) 
         av['voice_plan'] = av['voice_plan'].map({'Yes': "voice_plan_yes" ,'No': "voice_plan_no"})
         av['intl_plan'] = av['intl_plan'].map({'Yes': "intl_plan_yes" ,'No': "intl_plan_no"})
         columns1=['state', 'area_code', 'voice_plan', 'intl_plan']
@@ -503,30 +499,30 @@ if selected == 'Prediction':
             av[col] = 0
         if st.button("Predict"):
             prediction = model.predict(av)
-            prediction_proba = model.predict_proba(av)
+            prediction_proba = model.predict_proba(av)           
             st.subheader('Will Customer Churn ???')
 #             st.write('Yes' if prediction[0] == 1 else 'No')
             if prediction[0] == 0:
                 st.success('Customer will not Churn')
             elif prediction[0] == 1:
-                st.error( 'Customer will Churn')
+                st.error( 'Customer will Churn')            
             st.subheader('Prediction Probability')
             d77 = pd.DataFrame(prediction_proba, columns=['No', 'Yes'])
             d77 = d77.applymap(lambda x: '{:.2%}'.format(x))
             # Format DataFrame for Streamlit app
             for col, values in d77.iteritems():
                 st.write(f'{col}  -  {values[0]}')
-
-
-
+            
+            
+    
     elif option == 'Dataset':
         dataset=st.sidebar.file_uploader("Upload File Here", type = ['csv'])
         if dataset is not None:
             av= pd.read_csv(dataset)
             d=av.copy()
-            av['state'] = av['state'].replace(sc.set_index('State')['Value'])
+            av['state'] = av['state'].replace(sc.set_index('State')['Value']) 
             av['voice_plan'] = av['voice_plan'].map({'yes': "voice_plan_yes" ,'no': "voice_plan_no"})
-            av['intl_plan'] = av['intl_plan'].map({'yes': "intl_plan_yes" ,'no': "intl_plan_no"})
+            av['intl_plan'] = av['intl_plan'].map({'yes': "intl_plan_yes" ,'no': "intl_plan_no"})   
             columns1=['state', 'area_code', 'voice_plan', 'intl_plan']
             for i in columns1:
                 x=pd.DataFrame(ohe.fit_transform(av[[i]]), columns=av[i].unique())
@@ -548,6 +544,7 @@ if selected == 'Prediction':
                     href = f'<a href="data:file/csv;base64,{b64}" download="my_dataset.csv">Download CSV file</a>'
                     st.markdown(href, unsafe_allow_html=True)
                 download_button(e)
+                
 
 
-
+    
