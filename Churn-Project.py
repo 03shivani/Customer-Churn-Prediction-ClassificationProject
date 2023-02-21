@@ -426,7 +426,7 @@ data1=['High', 'Low-Medium', 'Low', 'Medium-High', 'intl_plan_no',
 sc=pd.read_csv("state-category.csv")
 unique_states=pd.read_csv("unique_states.csv")
 import pickle
-model = pickle.load(open('ch.pkl','rb'))
+model = pickle.load(open('CH.pkl','rb'))
 ##############################   User Input    
     
 if selected == 'Prediction': 
