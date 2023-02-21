@@ -12,5 +12,5 @@ The deployment section is divided in the two part:
 EDA is further divided into four parts : Descriptive Statistics , Univariate, Bivariate , Multivariate
 Prediction : In which we can predict whether the customer will churn or not by putting manual entries and also by uploading dataset.
 
-Click here to show the user
+Click here to open the app of Churn Prediction:
 https://03shivani-customer-churn-prediction-classifica-p-project-k3yioz.streamlit.app/
