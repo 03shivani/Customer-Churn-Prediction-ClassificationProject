@@ -13,4 +13,4 @@ EDA is further divided into four parts : Descriptive Statistics , Univariate, Bi
 Prediction : In which we can predict whether the customer will churn or not by putting manual entries and also by uploading dataset.
 
 Click here to open the app of Churn Prediction:
-https://03shivani-customer-churn-prediction-classifica-p-project-k3yioz.streamlit.app/
+
